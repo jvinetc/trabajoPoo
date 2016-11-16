@@ -38,8 +38,8 @@ public class ClientesFacadeREST extends AbstractFacade<Clientes> {
     @POST
     @Override
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void create(Clientes entity) {
-        super.create(entity);
+    public boolean create(Clientes entity) {
+        return super.create(entity);
     }
 
     @PUT

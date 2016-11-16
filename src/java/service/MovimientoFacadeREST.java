@@ -38,8 +38,8 @@ public class MovimientoFacadeREST extends AbstractFacade<Movimiento> {
     @POST
     @Override
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void create(Movimiento entity) {
-        super.create(entity);
+    public boolean create(Movimiento entity) {
+        return super.create(entity);
     }
 
     @PUT

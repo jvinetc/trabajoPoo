@@ -38,8 +38,8 @@ public class BodegaFacadeREST extends AbstractFacade<Bodega> {
     @POST
     @Override
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void create(Bodega entity) {
-        super.create(entity);
+    public boolean create(Bodega entity) {
+        return super.create(entity);
     }
 
     @PUT

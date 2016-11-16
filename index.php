@@ -17,7 +17,20 @@
                         <input name="contrasenia" type="password" id="contrasenia" placeholder="Ingresa Password" required="">
  
                     <p id="bot"><input type="submit" id="submit" name="submit" value="Ingresar" class="boton"></p>
-                </form>            
+                </form>   
+            <?php
+            require_once './entidades/Usuarios.php';
+            require_once './servicio/funcionesUsuario.php';
+            $usuario= new Usuarios();
+            $usuario->setContrasenia("dadedo1983");
+            $usuario->setIdUsuario(null);
+            $usuario->setNombreUsuario("papalote");
+            $funcion= new FuncionesUsuario();
+            echo '<pre>';
+            var_dump($usuario);
+            var_dump($funcion->crearUsuario($usuario));
+            echo '</pre>';
+            ?>
             
 </body>
  

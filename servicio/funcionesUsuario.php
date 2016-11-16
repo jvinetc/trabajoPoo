@@ -28,6 +28,19 @@ class FuncionesUsuario {
         $json = json_encode((array) $result);
         return $json;
     }
+    
+    function crearUsuario($usuario){
+        $url="http://localhost:35056/VehiculosCV2/webresources/entidades.usuarios";
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type:application/xml"));
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $usuario);
+        $result = curl_exec($ch);
+        
+        return $result;
+    }
 
 }
 

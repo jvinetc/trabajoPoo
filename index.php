@@ -25,11 +25,20 @@
             $usuario->setContrasenia("dadedo1983");
             $usuario->setIdUsuario(null);
             $usuario->setNombreUsuario("papalote");
+            
             $funcion= new FuncionesUsuario();
+            print_r($usuario);
+            var_dump(get_object_vars($usuario2));
             echo '<pre>';
             var_dump($usuario);
             var_dump($funcion->crearUsuario($usuario));
             echo '</pre>';
+            
+            
+            function generarXML($objeto){
+                $arr= get_object_vars($objeto);
+                return $arr;
+            }
             ?>
             
 </body>

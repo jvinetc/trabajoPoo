@@ -7,13 +7,13 @@
         <script type="text/javascript">
 
             function mostrar(id) {
-                if (id == "venta") {
+                if (id === "venta") {
                     document.getElementById("venta").style.visibility = "visible";
                     document.getElementById("compra").style.visibility = "hidden";
 
                 }
 
-                if (id == "compra") {
+                if (id === "compra") {
                     document.getElementById("venta").style.visibility = "hidden";
                     document.getElementById("compra").style.visibility = "visible";
                 }

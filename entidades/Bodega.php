@@ -3,10 +3,10 @@
 class Bodega  {
 
     
-    private $idBodega;
-    private $nombreBodega;
-    private $codigoBodega;
-    private $idProducto;
+    var $idBodega;
+    var $nombreBodega;
+    var $codigoBodega;
+    var $idProducto;
 
     function __construct() {
         

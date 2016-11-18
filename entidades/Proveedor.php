@@ -1,11 +1,11 @@
 <?php
 class Proveedor{
 
-    private $idProveedor;
-    private $nombreProveedor;
-    private $rutProveedor;
-    private $direccion;
-    private $telefono;
+    var $idProveedor;
+    var $nombreProveedor;
+    var $rutProveedor;
+    var $direccion;
+    var $telefono;
     
     function __construct() {
         

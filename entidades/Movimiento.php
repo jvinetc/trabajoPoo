@@ -2,13 +2,13 @@
 class Movimiento{
 
     
-    private $idMovimiento;
-    private $tipoMovimiento;
-    private $totalMovimiento;
-    private $idProveedor;
-    private $idUsuario;
-    private $idCliente;
-    private $idBodega;
+    var $idMovimiento;
+    var $tipoMovimiento;
+    var $totalMovimiento;
+    var $idProveedor;
+    var $idUsuario;
+    var $idCliente;
+    var $idBodega;
     
     function __construct() {
         

@@ -8,10 +8,10 @@ package Entidades;
 class Productos {
 
     
-    private $idProducto;
-    private $nombreProducto;
-    private $codigoProducto;
-    private $cantidad;
+    var $idProducto;
+    var $nombreProducto;
+    var $codigoProducto;
+    var $cantidad;
 
     function __construct() {
         

@@ -8,7 +8,7 @@ switch ($_REQUEST["funcion"]) {
         $usuario= new Usuarios();
         $usu = $_REQUEST["usuario"];
         $pass = $_REQUEST["contrasenia"];
-        $json = $funcUsu->login($usu, $pass);
+        $json = $funcUsu->login($usu, $pass);       
         $_SESSION["usuarioJson"]=$json;
         $array = json_decode($json);
         $usuario->setContrasenia($array->contrasenia);

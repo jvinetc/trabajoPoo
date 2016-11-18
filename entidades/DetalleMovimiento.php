@@ -2,11 +2,11 @@
 class DetalleMovimiento{
 
     
-    private $idDetalle;
-    private $precio;
-    private $cantidad;
-    private $idMovimiento;
-    private $productos;
+    var $idDetalle;
+    var $precio;
+    var $cantidad;
+    var $idMovimiento;
+    var $productos;
 
     function __construct() {
         

@@ -2,11 +2,11 @@
 
 class Clientes {
 
-    private $idCliente;
-    private $nombreCliente;
-    private $rut;
-    private $direccion;
-    private $telefono;
+    var $idCliente;
+    var $nombreCliente;
+    var $rut;
+    var $direccion;
+    var $telefono;
 
     function __construct() {
         

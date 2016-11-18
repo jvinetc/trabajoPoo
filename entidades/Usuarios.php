@@ -1,35 +1,35 @@
 <?php
 class Usuarios{
 
-    private $contrasenia;
-    private $idUsuario;
-    private $nombreUsuario;
+    var $contrasenia;
+    var $idUsuario;
+    var $nombreUsuario;
     
-    function __construct() {
+    public function __construct() {
         
     }
 
-    function getContrasenia() {
+    public function getContrasenia() {
         return $this->contrasenia;
     }
 
-    function getIdUsuario() {
+    public function getIdUsuario() {
         return $this->idUsuario;
     }
 
-    function getNombreUsuario() {
+    public function getNombreUsuario() {
         return $this->nombreUsuario;
     }
 
-    function setContrasenia($contrasenia) {
+    public function setContrasenia($contrasenia) {
         $this->contrasenia = $contrasenia;
     }
 
-    function setIdUsuario($idUsuario) {
+    public function setIdUsuario($idUsuario) {
         $this->idUsuario = $idUsuario;
     }
 
-    function setNombreUsuario($nombreUsuario) {
+    public function setNombreUsuario($nombreUsuario) {
         $this->nombreUsuario = $nombreUsuario;
     }
 

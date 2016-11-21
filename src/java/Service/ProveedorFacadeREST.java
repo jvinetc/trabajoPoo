@@ -45,14 +45,14 @@ public class ProveedorFacadeREST extends AbstractFacade<Proveedor> {
     @PUT
     @Path("{id}")
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void edit(@PathParam("id") Integer id, Proveedor entity) {
-        super.edit(entity);
+    public boolean edit(@PathParam("id") Integer id, Proveedor entity) {
+        return super.edit(entity);
     }
 
     @DELETE
     @Path("{id}")
-    public void remove(@PathParam("id") Integer id) {
-        super.remove(super.find(id));
+    public boolean remove(@PathParam("id") Integer id) {
+         return super.remove(super.find(id));
     }
 
     @GET

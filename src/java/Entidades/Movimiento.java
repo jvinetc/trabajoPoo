@@ -31,8 +31,12 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "movimiento")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Movimiento.findAll", query = "SELECT m FROM Movimiento m")})
+    @NamedQuery(name = "Movimiento.findAll", query = "SELECT m FROM Movimiento m"),
+    @NamedQuery(name="Movimiento.ultimoId", query="SELECT MAX(m.idMovimiento) FROM Movimiento m")})
 public class Movimiento implements Serializable {
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    @Column(name = "total_movimiento")
+    private Float totalMovimiento;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -43,8 +47,6 @@ public class Movimiento implements Serializable {
     @Size(max = 10)
     @Column(name = "tipo_movimiento")
     private String tipoMovimiento;
-    @Column(name = "total movimiento")
-    private Integer totalMovimiento;
     @JoinColumn(name = "id_proveedor", referencedColumnName = "id_proveedor")
     @ManyToOne
     private Proveedor idProveedor;
@@ -83,13 +85,6 @@ public class Movimiento implements Serializable {
         this.tipoMovimiento = tipoMovimiento;
     }
 
-    public Integer getTotalMovimiento() {
-        return totalMovimiento;
-    }
-
-    public void setTotalMovimiento(Integer totalMovimiento) {
-        this.totalMovimiento = totalMovimiento;
-    }
 
     public Proveedor getIdProveedor() {
         return idProveedor;
@@ -155,6 +150,14 @@ public class Movimiento implements Serializable {
     @Override
     public String toString() {
         return "Entidades.Movimiento[ idMovimiento=" + idMovimiento + " ]";
+    }
+
+    public Float getTotalMovimiento() {
+        return totalMovimiento;
+    }
+
+    public void setTotalMovimiento(Float totalMovimiento) {
+        this.totalMovimiento = totalMovimiento;
     }
     
 }

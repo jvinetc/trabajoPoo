@@ -31,8 +31,13 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "productos")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Productos.findAll", query = "SELECT p FROM Productos p")})
+    @NamedQuery(name = "Productos.findAll", query = "SELECT p FROM Productos p"),
+    @NamedQuery(name="Productos.ultimoId", query="SELECT MAX(p.idProducto) FROM Productos p")})
 public class Productos implements Serializable {
+    @OneToMany(mappedBy = "idProducto")
+    private Collection<Bodega> bodegaCollection;
+    @OneToMany(mappedBy = "idArticulo")
+    private Collection<DetalleMovimiento> detalleMovimientoCollection;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -48,11 +53,7 @@ public class Productos implements Serializable {
     private String codigoProducto;
     @Column(name = "cantidad")
     private Integer cantidad;
-    @JoinColumn(name = "id_producto", referencedColumnName = "id_detalle", insertable = false, updatable = false)
-    @OneToOne(optional = false)
-    private DetalleMovimiento detalleMovimiento;
-    @OneToMany(mappedBy = "idProducto")
-    private Collection<Bodega> bodegaCollection;
+    
 
     public Productos() {
     }
@@ -93,23 +94,6 @@ public class Productos implements Serializable {
         this.cantidad = cantidad;
     }
 
-    public DetalleMovimiento getDetalleMovimiento() {
-        return detalleMovimiento;
-    }
-
-    public void setDetalleMovimiento(DetalleMovimiento detalleMovimiento) {
-        this.detalleMovimiento = detalleMovimiento;
-    }
-
-    @XmlTransient
-    public Collection<Bodega> getBodegaCollection() {
-        return bodegaCollection;
-    }
-
-    public void setBodegaCollection(Collection<Bodega> bodegaCollection) {
-        this.bodegaCollection = bodegaCollection;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -133,6 +117,24 @@ public class Productos implements Serializable {
     @Override
     public String toString() {
         return "Entidades.Productos[ idProducto=" + idProducto + " ]";
+    }
+
+    @XmlTransient
+    public Collection<DetalleMovimiento> getDetalleMovimientoCollection() {
+        return detalleMovimientoCollection;
+    }
+
+    public void setDetalleMovimientoCollection(Collection<DetalleMovimiento> detalleMovimientoCollection) {
+        this.detalleMovimientoCollection = detalleMovimientoCollection;
+    }
+
+    @XmlTransient
+    public Collection<Bodega> getBodegaCollection() {
+        return bodegaCollection;
+    }
+
+    public void setBodegaCollection(Collection<Bodega> bodegaCollection) {
+        this.bodegaCollection = bodegaCollection;
     }
     
 }

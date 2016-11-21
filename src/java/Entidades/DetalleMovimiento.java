@@ -29,8 +29,13 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "detalle_movimiento")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "DetalleMovimiento.findAll", query = "SELECT d FROM DetalleMovimiento d")})
+    @NamedQuery(name = "DetalleMovimiento.findAll", query = "SELECT d FROM DetalleMovimiento d"),
+    @NamedQuery(name = "DetalleMovimiento.findIdMov", query = "SELECT d FROM DetalleMovimiento d WHERE d.idMovimiento.idMovimiento =  :idMovimiento")})
 public class DetalleMovimiento implements Serializable {
+
+    @JoinColumn(name = "id_articulo", referencedColumnName = "id_producto")
+    @ManyToOne
+    private Productos idArticulo;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -45,8 +50,6 @@ public class DetalleMovimiento implements Serializable {
     @JoinColumn(name = "id_movimiento", referencedColumnName = "id_movimiento")
     @ManyToOne
     private Movimiento idMovimiento;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "detalleMovimiento")
-    private Productos productos;
 
     public DetalleMovimiento() {
     }
@@ -87,14 +90,6 @@ public class DetalleMovimiento implements Serializable {
         this.idMovimiento = idMovimiento;
     }
 
-    public Productos getProductos() {
-        return productos;
-    }
-
-    public void setProductos(Productos productos) {
-        this.productos = productos;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -119,5 +114,13 @@ public class DetalleMovimiento implements Serializable {
     public String toString() {
         return "Entidades.DetalleMovimiento[ idDetalle=" + idDetalle + " ]";
     }
-    
+
+    public Productos getIdArticulo() {
+        return idArticulo;
+    }
+
+    public void setIdArticulo(Productos idArticulo) {
+        this.idArticulo = idArticulo;
+    }
+
 }

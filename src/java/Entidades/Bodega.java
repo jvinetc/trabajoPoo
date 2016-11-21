@@ -31,7 +31,8 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "bodega")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Bodega.findAll", query = "SELECT b FROM Bodega b")})
+    @NamedQuery(name = "Bodega.findAll", query = "SELECT b FROM Bodega b"),
+    @NamedQuery(name = "Bodega.ultimoIngreso", query = "SELECT MAX(b.idBodega) FROM Bodega b")})
 public class Bodega implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -124,5 +125,5 @@ public class Bodega implements Serializable {
     public String toString() {
         return "Entidades.Bodega[ idBodega=" + idBodega + " ]";
     }
-    
+
 }

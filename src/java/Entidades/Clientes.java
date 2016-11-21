@@ -29,7 +29,8 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "clientes")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Clientes.findAll", query = "SELECT c FROM Clientes c")})
+    @NamedQuery(name = "Clientes.findAll", query = "SELECT c FROM Clientes c"),
+    @NamedQuery(name = "Clientes.ultimoId", query = "SELECT MAX(c.idCliente) FROM Clientes c")})
 public class Clientes implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -133,5 +134,5 @@ public class Clientes implements Serializable {
     public String toString() {
         return "Entidades.Clientes[ idCliente=" + idCliente + " ]";
     }
-    
+
 }

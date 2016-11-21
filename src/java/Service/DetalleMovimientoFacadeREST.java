@@ -10,6 +10,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -45,14 +46,14 @@ public class DetalleMovimientoFacadeREST extends AbstractFacade<DetalleMovimient
     @PUT
     @Path("{id}")
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void edit(@PathParam("id") Integer id, DetalleMovimiento entity) {
-        super.edit(entity);
+    public boolean edit(@PathParam("id") Integer id, DetalleMovimiento entity) {
+        return super.edit(entity);
     }
 
     @DELETE
     @Path("{id}")
-    public void remove(@PathParam("id") Integer id) {
-        super.remove(super.find(id));
+    public boolean remove(@PathParam("id") Integer id) {
+        return super.remove(super.find(id));
     }
 
     @GET
@@ -82,7 +83,16 @@ public class DetalleMovimientoFacadeREST extends AbstractFacade<DetalleMovimient
     public String countREST() {
         return String.valueOf(super.count());
     }
-
+    
+    @GET
+    @Path("porId/{id}")
+    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    public List<DetalleMovimiento> buscaIdMovimiento(@PathParam("id") Integer id) {
+        TypedQuery<DetalleMovimiento> query= em.createNamedQuery("DetalleMovimiento.findIdMov",DetalleMovimiento.class);
+        query.setParameter("idMovimiento",id);
+        return query.getResultList();
+    }
+    
     @Override
     protected EntityManager getEntityManager() {
         return em;

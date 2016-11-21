@@ -10,6 +10,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -45,14 +46,14 @@ public class ClientesFacadeREST extends AbstractFacade<Clientes> {
     @PUT
     @Path("{id}")
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void edit(@PathParam("id") Integer id, Clientes entity) {
-        super.edit(entity);
+    public boolean edit(@PathParam("id") Integer id, Clientes entity) {
+        return super.edit(entity);
     }
 
     @DELETE
     @Path("{id}")
-    public void remove(@PathParam("id") Integer id) {
-        super.remove(super.find(id));
+    public boolean remove(@PathParam("id") Integer id) {
+        return super.remove(super.find(id));
     }
 
     @GET
@@ -81,6 +82,13 @@ public class ClientesFacadeREST extends AbstractFacade<Clientes> {
     @Produces(MediaType.TEXT_PLAIN)
     public String countREST() {
         return String.valueOf(super.count());
+    }
+    
+    @GET
+    @Path("/ultimoId")
+    public int ultimoId(){
+        Query query= em.createNamedQuery("Clientes.ultimoId",Clientes.class);
+        return (Integer)query.getSingleResult();
     }
 
     @Override

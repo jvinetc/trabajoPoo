@@ -1,23 +1,9 @@
 <?php
 
-class FuncionesUsuario {
+class FuncionesUsuario extends AbstractFunction {
 
-    private $url = "http://localhost:8080/VehiculosCV/webresources/entidades.usuarios";
+    private $url = "http://localhost:8282/VehiculosCV/webresources/entidades.usuarios";
     
-    function listarUsuarios() {
-        
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $this->url);
-        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
-        curl_setopt($ch, CURLOPT_HEADER, "Content-type:apllication/xml");
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        $data = simplexml_load_string(curl_exec($ch));
-        //$data= curl_exec($ch) or die("error: ".curl_error($ch));
-        curl_close($ch);
-        $json = json_encode((array) $data);
-        //$json = json_encode($data);
-        return $json;
-    }
 
     function login($nombreUsuario, $contrasenia) {
         $url = $this->url."/login/". $nombreUsuario . "/" . $contrasenia;
@@ -32,15 +18,8 @@ class FuncionesUsuario {
         return $json;
     }
     
-    function crearUsuario($usuario){        
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $this->url);
-        curl_setopt($ch, CURLOPT_POST, true);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type:application/json"));
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $usuario);
-        $result = curl_exec($ch);        
-        return $result;
+    protected function getUrl() {
+        return $this->url;
     }
 
 }

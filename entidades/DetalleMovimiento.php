@@ -6,7 +6,7 @@ class DetalleMovimiento{
     var $precio;
     var $cantidad;
     var $idMovimiento;
-    var $productos;
+    var $idArticulo;
 
     function __construct() {
         
@@ -28,8 +28,8 @@ class DetalleMovimiento{
         return $this->idMovimiento;
     }
 
-    function getProductos() {
-        return $this->productos;
+    function getIdArticulo() {
+        return $this->idArticulo;
     }
 
     function setIdDetalle($idDetalle) {
@@ -48,8 +48,8 @@ class DetalleMovimiento{
         $this->idMovimiento = $idMovimiento;
     }
 
-    function setProductos($productos) {
-        $this->productos = $productos;
+    function setIdArticulo($idArticulo) {
+        $this->idArticulo = $idArticulo;
     }
 
 

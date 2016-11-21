@@ -9,12 +9,14 @@ class Movimiento{
     var $idUsuario;
     var $idCliente;
     var $idBodega;
+   
     
     function __construct() {
         
     }
+    
 
-    function getIdMovimiento() {
+    public function getIdMovimiento() {
         return $this->idMovimiento;
     }
 
